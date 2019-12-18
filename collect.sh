@@ -16,6 +16,7 @@ function package_name {
     while [[ ${#folder} -gt 1 ]]; do
         if mdls -name kMDItemContentTypeTree "$folder" | grep 'com.apple.package' > /dev/null; then
             bundle_id="$(mdls -raw -name kMDItemCFBundleIdentifier "$folder")"
+            #content_type="$(mdls -raw -name kMDItemContentType "$folder")"
             if [[ $bundle_id == "(null)" ]]; then
                 basename "$folder"
             else
